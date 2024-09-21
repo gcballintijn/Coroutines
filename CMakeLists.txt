@@ -34,3 +34,24 @@ target_link_libraries(cr_return_value
     compiler_flags
     compiler_options
 )
+
+add_executable(cr_yield_value_1 cr_yield_value_1.cxx)
+target_link_libraries(cr_yield_value_1
+    PRIVATE
+    compiler_flags
+    compiler_options
+)
+
+add_executable(cr_yield_value_2 cr_yield_value_2.cxx)
+target_link_libraries(cr_yield_value_2
+    PRIVATE
+    compiler_flags
+    compiler_options
+)
+
+add_executable(cr_yield_value_3 cr_yield_value_3.cxx)
+target_link_libraries(cr_yield_value_3
+    PRIVATE
+    compiler_flags
+    compiler_options
+)
