@@ -21,51 +21,6 @@ target_compile_options(compiler_options
     -pedantic
 )
 
-add_executable(cr_return_void cr_return_void.cxx)
-target_link_libraries(cr_return_void
-    PRIVATE
-    compiler_flags
-    compiler_options
-)
-
-add_executable(cr_return_value cr_return_value.cxx)
-target_link_libraries(cr_return_value
-    PRIVATE
-    compiler_flags
-    compiler_options
-)
-
-add_executable(cr_yield_value_1 cr_yield_value_1.cxx)
-target_link_libraries(cr_yield_value_1
-    PRIVATE
-    compiler_flags
-    compiler_options
-)
-
-add_executable(cr_yield_value_2 cr_yield_value_2.cxx)
-target_link_libraries(cr_yield_value_2
-    PRIVATE
-    compiler_flags
-    compiler_options
-)
-
-add_executable(cr_yield_value_3 cr_yield_value_3.cxx)
-target_link_libraries(cr_yield_value_3
-    PRIVATE
-    compiler_flags
-    compiler_options
-)
-
-add_executable(cr_await_1 cr_await_1.cxx)
-target_link_libraries(cr_await_1
-    PRIVATE
-    compiler_flags
-    compiler_options
-)
-
-add_executable(cr_await_2 cr_await_2.cxx)
-target_link_libraries(cr_await_2
-    PRIVATE
-    compiler_flags
-    compiler_options
-)
+add_subdirectory(co_return)
+add_subdirectory(co_yield)
+add_subdirectory(co_await)

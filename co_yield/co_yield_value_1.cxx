@@ -1,7 +1,7 @@
 //
-// cr_return_value.cxx -- Coroutines
+// co_yield_value_1.cxx -- Coroutines
 //
-// Degenerate coroutine, does nothing, just falls through with a return value.
+// Degenerate coroutine, does nothing, just yields a value (falling through).
 //
 
 #include <cstdlib>
@@ -22,15 +22,18 @@ struct Promise {
     auto get_return_object()        { return Coroutine{*this}; }
     auto initial_suspend()          { return std::suspend_never{}; }
     auto final_suspend() noexcept   { return std::suspend_never{}; }
-    void return_value(int value)    { _value = value; }
+    auto yield_value(int value)     { _value = value; return std::suspend_never{}; }
     void unhandled_exception()      {}
 };
 
 Coroutine
 coroutine()
 {
-    std::cout << "coroutine(): return 42" << std::endl;
-    co_return 42;
+    std::cout << "coroutine(): start, yield 42" << std::endl;
+
+    co_yield 42;
+
+    std::cout << "coroutine(): return" << std::endl;
 }
 
 int

@@ -1,5 +1,5 @@
 //
-// cr_return_void.cxx -- Coroutines
+// co_await_1.cxx -- Coroutines
 //
 // Degenerate coroutine, does nothing, just falls through.
 //
@@ -18,24 +18,26 @@ struct Promise {
     auto get_return_object()        { return Coroutine{}; }
     auto initial_suspend()          { return std::suspend_never{}; }
     auto final_suspend() noexcept   { return std::suspend_never{}; }
-    void return_void()              {}
     void unhandled_exception()      {}
 };
 
 Coroutine
 coroutine()
 {
-    std::cout << "coroutine(): return void" << std::endl;
-    co_return;
+    std::cout << "coroutine(): suspend_never" << std::endl;
+
+    co_await std::suspend_never{};
+
+    std::cout << "coroutine(): return" << std::endl;
 }
 
 int
 main(int, char const **)
 {
-    std::cout << "main(): start()" << std::endl;
+    std::cout << "main(): start" << std::endl;
 
     coroutine();
 
-    std::cout << "main(): end()" << std::endl;
+    std::cout << "main(): end" << std::endl;
     return EXIT_SUCCESS;
 }
