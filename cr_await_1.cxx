@@ -1,7 +1,7 @@
 //
-// cr_return_value.cxx -- Coroutines
+// cr_await_1.cxx -- Coroutines
 //
-// Degenerate coroutine, does nothing, just falls through with a return value.
+// Degenerate coroutine, does nothing, just falls through.
 //
 
 #include <cstdlib>
@@ -12,25 +12,23 @@ struct Promise;
 
 struct Coroutine {
     using promise_type = Promise;
-
-    Promise& _promise;
 };
 
 struct Promise {
-    int _value{0};
-
-    auto get_return_object()        { return Coroutine{*this}; }
+    auto get_return_object()        { return Coroutine{}; }
     auto initial_suspend()          { return std::suspend_never{}; }
     auto final_suspend() noexcept   { return std::suspend_never{}; }
-    void return_value(int value)    { _value = value; }
     void unhandled_exception()      {}
 };
 
 Coroutine
 coroutine()
 {
-    std::cout << "coroutine(): return 42" << std::endl;
-    co_return 42;
+    std::cout << "coroutine(): suspend_never" << std::endl;
+
+    co_await std::suspend_never{};
+
+    std::cout << "coroutine(): return" << std::endl;
 }
 
 int
@@ -38,8 +36,8 @@ main(int, char const **)
 {
     std::cout << "main(): start" << std::endl;
 
-    auto instance = coroutine();
+    coroutine();
 
-    std::cout << "main(): end, value = " << instance._promise._value << std::endl;
+    std::cout << "main(): end" << std::endl;
     return EXIT_SUCCESS;
 }

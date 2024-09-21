@@ -55,3 +55,17 @@ target_link_libraries(cr_yield_value_3
     compiler_flags
     compiler_options
 )
+
+add_executable(cr_await_1 cr_await_1.cxx)
+target_link_libraries(cr_await_1
+    PRIVATE
+    compiler_flags
+    compiler_options
+)
+
+add_executable(cr_await_2 cr_await_2.cxx)
+target_link_libraries(cr_await_2
+    PRIVATE
+    compiler_flags
+    compiler_options
+)

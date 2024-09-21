@@ -25,17 +25,17 @@ struct Promise {
 Coroutine
 coroutine()
 {
-    std::cout << "coroutine()" << std::endl;
-
+    std::cout << "coroutine(): return void" << std::endl;
     co_return;
 }
 
 int
 main(int, char const **)
 {
-    std::cout << "Coroutine: return void" << std::endl;
+    std::cout << "main(): start()" << std::endl;
 
     coroutine();
 
+    std::cout << "main(): end()" << std::endl;
     return EXIT_SUCCESS;
 }

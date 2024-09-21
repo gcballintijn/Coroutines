@@ -29,7 +29,7 @@ struct Promise {
 Coroutine
 coroutine()
 {
-    std::cout << "coroutine(): yield 42" << std::endl;
+    std::cout << "coroutine(): start, yield 42" << std::endl;
 
     co_yield 42;
 
@@ -39,11 +39,10 @@ coroutine()
 int
 main(int, char const **)
 {
-    std::cout << "Coroutine: yield value" << std::endl;
+    std::cout << "main(): start" << std::endl;
 
     auto instance = coroutine();
 
-    std::cout << "return value = " << instance._promise._value << std::endl;
-
+    std::cout << "main(): end, value = " << instance._promise._value << std::endl;
     return EXIT_SUCCESS;
 }
