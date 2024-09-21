@@ -27,3 +27,10 @@ target_link_libraries(cr_return_void
     compiler_flags
     compiler_options
 )
+
+add_executable(cr_return_value cr_return_value.cxx)
+target_link_libraries(cr_return_value
+    PRIVATE
+    compiler_flags
+    compiler_options
+)
