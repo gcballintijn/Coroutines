@@ -11,3 +11,4 @@ Degenerate cases.
 Blocking.
 * `cr_yield_value_3` -- blocks twice, yielding a value.
 * `co_await_2` -- blocks twice.
+* `co_await_3` -- block, data in, resume, and data out.

@@ -1,5 +1,5 @@
 //
-// co_await.cxx -- Coroutines
+// co_await_2.cxx -- Coroutines
 //
 // Coroutine, blocks twice.
 //
